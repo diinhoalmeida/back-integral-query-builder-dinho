@@ -21,9 +21,9 @@ const cadastrarUsuario = async (req, res) => {
     }
 
     try {
-        const verificarEmail = await knex('usuario').where({email: email});
+        const verificarEmail = await knex('usuarios').where({ email });
 
-        if (verificarEmail) {
+        if (!verificarEmail) {
             return res.status(400).json("O email já existe");
         }
 

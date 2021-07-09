@@ -16,10 +16,12 @@ const login = async (req, res) => {
         if (!usuario) {
             return res.status(400).json("O usuario não foi encontrado");
         }
-
+        
         const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
 
         if (!senhaCorreta) {
+            // console.log(senha, "-", typeof senha);
+            // console.log(usuario.senha, "-", typeof usuario.senha);
             return res.status(400).json("Email e senha não confere");
         }
 
